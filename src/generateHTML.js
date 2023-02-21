@@ -2,7 +2,18 @@
 
 
 function generateHtml(teamArray) {
-    const cardArray = []
+    let cardArray = ""
+    for (let i = 0; i < teamArray.length; i++) {
+        if (teamArray[i].getRole() === "Manager") {
+            cardArray += makeManager(teamArray[i])
+        } else if (teamArray[i].getRole() === "Engineer") {
+            cardArray += makeEngineer(teamArray[i])
+        } else {
+            cardArray += makeIntern(teamArray[i])
+        }
+    }
+    return cardArray
+}
 
 function makeManager(employee) {
     return `
@@ -35,8 +46,8 @@ function makeIntern(employee) {
         </div>
     `
 }
-return cardArray.join("")
-}
+// return cardArray.join("")
+// }
 
 module.exports = teamArray => {
     return `
