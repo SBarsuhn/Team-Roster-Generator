@@ -39,7 +39,67 @@ inquirer
     addMember()
 })
 }
-
+function promptEngineer() {
+    inquirer
+    .prompt([
+        {
+            type:"input",
+            message:"What is the engineer's name?",
+            name:"engineername",
+        },
+        {
+            type:"input",
+            message:"What is the engineer's Employee ID?",
+            name:"engineerID",
+        },
+        {
+            type:"input",
+            message:"What is the engineer's email?",
+            name:"engineeremail",
+        },
+        {
+            type:"input",
+            message:"What is the engineer's Github username?",
+            name:"engineergit",
+        },
+    ]).then (data => {
+        const instance = new Engineer(data.engineername, data.engineerID, data.engineeremail, data.engineergit )
+        teamArray.push(instance)
+        console.log(teamArray)
+        addMember()
+    })
+    }
+    function promptIntern() {
+        inquirer
+        .prompt([
+            {
+                type:"input",
+                message:"What is the Intern's name?",
+                name:"internname",
+            },
+            {
+                type:"input",
+                message:"What is the intern's Employee ID?",
+                name:"internID",
+            },
+            {
+                type:"input",
+                message:"What is the intern's email?",
+                name:"internemail",
+            },
+            {
+                type:"input",
+                message:"What is the intern's school?",
+                name:"internschool",
+            },
+        ]).then (data => {
+            const instance = new Intern(data.internname, data.internID, data.internemail, data.internschool )
+            teamArray.push(instance)
+            console.log(teamArray)
+            addMember()
+        })
+        }
+    
 
 
 function addMember() {
@@ -47,13 +107,13 @@ inquirer
 .prompt([
     {
     type:"list",
-    message:"Do you want to add another team member?",
+    message:"Do you want to add a team member?",
     name:"addmember",
     choices:[
-        "Manager", 
-        "Engineer",
-        "Intern",
-        "None",
+        "Manager", new inquirer.Separator(),
+        "Engineer", new inquirer.Separator(),
+        "Intern", new inquirer.Separator(),
+        "None", new inquirer.Separator(),
     ]
 }
 ]).then (data => {
@@ -70,13 +130,14 @@ promptManager()
     }
   else {
     console.log("Team created")
-    fs.writefilesync ("index.html", generateHtml(teamArray))
+    console.log(teamArray)
+    fs.writeFileSync("index.html", generateHtml(teamArray))
   }
 })
 
 }
 
-
+addMember()
 
 
 // GIVEN a command-line application that accepts user input

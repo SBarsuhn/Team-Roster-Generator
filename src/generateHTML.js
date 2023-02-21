@@ -1,3 +1,6 @@
+
+
+
 function generateHtml(teamArray) {
     const cardArray = []
 
@@ -32,31 +35,31 @@ function makeIntern(employee) {
         </div>
     `
 }
-
 return cardArray.join("")
 }
 
 module.exports = teamArray => {
     return `
     <!DOCTYPE html>
-<html lang="en">
-<head>
+    <html lang="en">
+    <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css" />
     <title>My Team</title>
-</head>
+    </head>
 <body>
-    <header class="page-head">MY TEAM</header>
-    <main>
-        <div class="card-container">
-            ${generateHtml(teamArray)}
-        </div>
+<header class="page-head">MY TEAM</header>
+<main>
+<div class="card-container">
+${generateHtml(teamArray)}
+</div>
 
-    </div>
-    </main>
+</div>
+</main>
 </body>
 </html>
-    `
+`
+
 }
