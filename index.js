@@ -1,14 +1,15 @@
+
+// These are all of the other required files. The application needs information from these files to run
 const inquirer = require("inquirer");
 const fs = require("fs")
-const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager")
 const generateHtml = require("./src/generateHTML")
 
-
+// This is just an empty array to put the user input into
 const teamArray = []
-
+// This is the list of questions for when the user is creating a card for a person with the role of "Manager"
 function promptManager() {
 inquirer
 .prompt([
@@ -33,12 +34,13 @@ inquirer
         name:"manageroffice",
     },
 ]).then (data => {
+    // This adds that information to a new instance
     const instance = new Manager(data.managername, data.managerID, data.manageremail, data.manageroffice )
     teamArray.push(instance)
-    console.log(teamArray)
     addMember()
 })
 }
+// This is the list of questions for when the user is creating a card for a person with the role of "Engineer"
 function promptEngineer() {
     inquirer
     .prompt([
@@ -63,12 +65,13 @@ function promptEngineer() {
             name:"engineergit",
         },
     ]).then (data => {
+        // This adds that information to a new instance
         const instance = new Engineer(data.engineername, data.engineerID, data.engineeremail, data.engineergit )
         teamArray.push(instance)
-        console.log(teamArray)
         addMember()
     })
     }
+    // This is the list of questions for when the user is creating a card for a person with the role of "Intern"
     function promptIntern() {
         inquirer
         .prompt([
@@ -93,15 +96,15 @@ function promptEngineer() {
                 name:"internschool",
             },
         ]).then (data => {
+             // This adds that information to a new instance
             const instance = new Intern(data.internname, data.internID, data.internemail, data.internschool )
             teamArray.push(instance)
-            console.log(teamArray)
             addMember()
         })
         }
     
 
-
+// This is the main menu of the application. Here you can select which role you want to create
 function addMember() {
 inquirer
 .prompt([
@@ -117,6 +120,7 @@ inquirer
     ]
 }
 ]).then (data => {
+    // This will launch the corresponding function to whatever option you pick
     if (data.addmember === "Manager") {
 promptManager()
     }
@@ -129,31 +133,14 @@ promptManager()
     
     }
   else {
+    // If you chose to not any new members the index.html will be written and you will get a console log telling you that the team has been created
     console.log("Team created")
-    console.log(teamArray)
     fs.writeFileSync("index.html", generateHtml(teamArray))
   }
 })
 
 }
-
+// This function is called here to activate the application when you type "node index.js" in the terminal
 addMember()
 
 
-// GIVEN a command-line application that accepts user input
-// WHEN I am prompted for my team members and their information
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-// WHEN I click on an email address in the HTML
-// THEN my default email program opens and populates the TO field of the email with the address
-// WHEN I click on the GitHub username
-// THEN that GitHub profile opens in a new tab
-// WHEN I start the application
-// THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
-// THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-// WHEN I select the engineer option
-// THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-// WHEN I select the intern option
-// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-// WHEN I decide to finish building my team
-// THEN I exit the application, and the HTML is generated
