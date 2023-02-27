@@ -31,6 +31,7 @@
 - Just answer the prompts as they are given and hit "enter" on your keyboard to move on to the next prompt. When you have added all of your team members chose the "None" option when it asks if you want to add any more members. After that and index.html file will be generated in the main directory and the application will let you know it has finished creating the file.
 
 - [Example Video](./assets/Demo/Team_Gen_Demo.mp4)
+- [Example Video Link](https://clipchamp.com/watch/bMHJVn8SUmk)
 
 
 ## LICENSE
