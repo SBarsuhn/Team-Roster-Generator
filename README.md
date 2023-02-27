@@ -43,6 +43,7 @@
 - You can find the tests in the folder titled "tests" the easiest way to run them is to install an extension  called "jest runner" in VS code. It will let you easily see the tests and run them with the button that appears over each test.
 
 - [Tests Video](./assets/Demo/tests.mp4.mp4)
+- [Tests Video Link](https://clipchamp.com/watch/DPg0imCtAnJ)
 
 
 ## Questions
